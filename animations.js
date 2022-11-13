@@ -24,6 +24,8 @@ AFRAME.registerComponent('scale-on-mouseenter', {
       var el = this.el;
       this.el.addEventListener('mouseenter', function () {
         el.object3D.scale.copy(data.to);
+        console.warn("enter");
+        console.warn(data.to);
       });
     },
 
