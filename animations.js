@@ -5,7 +5,7 @@ if (typeof AFRAME === 'undefined') {
 
 AFRAME.registerComponent('scale-on-mouseenter', {
     schema: {
-      to: {default: '1.5 1.5 1.5', type: 'vec3'}
+        to: {type: 'vec3', default: {x: 1.5, y: 1.5, z: 1.5}}
     },
 
     init: function () {
