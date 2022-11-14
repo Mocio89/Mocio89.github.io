@@ -8,12 +8,18 @@
     <a-scene embedded arjs>
 
       <a-light type="ambient" intensity="0.7" color="#ffffff"></a-light>
-      <a-light type="point" intensity="10" position="0 0 1"></a-light>
+      <a-light type="point" intensity="10" position="0 0 -2"></a-light>
      
       <a-entity camera>
         <!-- <a-entity cursor></a-entity> -->
         <!-- <a-entity raycaster="objects: .clickable" cursor></a-entity> --> <!-- raycast dei soli oggetti con classe clickable -->
-        <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: black; shader: flat">
+                  <a-animation begin="click" easing="ease-in" attribute="scale" fill="forwards" from="0.2 0.2 0.2" to="1 1 1" dur="150"></a-animation>
+                  <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="500"></a-animation>
+        </a-entity>
       </a-entity>
 
       <a-marker preset="hiro">
@@ -24,15 +30,6 @@
           animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: easeInOutCirc"
           scale-on-mouseenter
         ></a-entity>
-
-        <a-entity
-          geometry="primitive: box"
-          material="color: red"
-          position="0 0.3 0.1"
-          animation__mouseenter="property: components.material.material.color; type: color; to: blue; startEvents: mouseenter; dur: 500";
-          animation__mouseleave="property: components.material.material.color; type: color; to: red; startEvents: mouseleave; dur: 500";>       
-        </a-entity>
-
       </a-marker>
 
       <!-- <a-entity camera></a-entity> -->
