@@ -20,7 +20,8 @@ AFRAME.registerComponent('move_near_far_to_camera', {
     /** it is called once when the component is first plugged into its entity. **/
     init: function () {
         this.cam = document.querySelector("#main_camera");
-
+        console.warn("camera");
+        console.warn(this.cam);
         this.fwd = false; //animation forward
         this.bck = false; //animation backward
         this.t_param = 0;
