@@ -27,7 +27,8 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         this.bck = false; //animation backward
         this.t_param = 0;
 
-        this.start_pos = this.el.object3D.position;
+        //this.start_pos = this.el.object3D.position;
+        el.object3D.getWorldPosition(this.start_pos);
         this.InterpolatedVec = new THREE.Vector3();
         this.CurrentPosVec = new THREE.Vector3();
         this.TargetPosVec = new THREE.Vector3();
@@ -45,7 +46,8 @@ AFRAME.registerComponent('move_near_far_to_camera', {
             bck = false; //animation backward
             
             t_param = 0;
-            TargetPosVec.copy(cam.object3D.position);
+            //TargetPosVec.copy(cam.object3D.position);
+            cam.object3D.getWorldPosition(TargetPosVec);
             console.warn("enter");
             console.warn(TargetPosVec);
             console.warn(cam.object3D.position);
@@ -56,7 +58,8 @@ AFRAME.registerComponent('move_near_far_to_camera', {
             fwd = false; //animation forward
             bck = true; //animation backward
             t_param = 0;
-            CurrentPosVec.copy(el.object3D.position);
+            //CurrentPosVec.copy(el.object3D.position);
+            el.object3D.getWorldPosition(CurrentPosVec);
             console.warn("leave");
             console.warn(CurrentPosVec);
             console.warn(el.object3D.position);

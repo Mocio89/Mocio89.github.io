@@ -10,18 +10,19 @@
       <a-light type="ambient" intensity="0.7" color="#ffffff"></a-light>
       <a-light type="point" intensity="10" position="0 0 -2"></a-light>
      
+      <!-- Camera is fixed at 0,0,0 looking at -Z -->
       <a-entity camera id="main_camera">
         <!-- <a-entity cursor></a-entity> -->
         <!-- <a-entity raycaster="objects: .clickable" cursor></a-entity> --> <!-- raycast dei soli oggetti con classe clickable -->
         <a-entity cursor="fuse: true; fuseTimeout: 1500"
-                  position="0 0 -1"
+                  position="0 0 0"
                   geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
                   material="color: black; shader: flat">
                   <a-animation begin="click" easing="ease-in" attribute="scale" fill="forwards" from="0.2 0.2 0.2" to="1 1 1" dur="150"></a-animation>
                   <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
         </a-entity>
       </a-entity>
-      <!--  -->
+      <!-- multiple markers can be programmed. Camera is fixed at 0,0,0 looking at -Z -->
       <a-marker preset="hiro">
         <a-entity
           position="0 0 0"
