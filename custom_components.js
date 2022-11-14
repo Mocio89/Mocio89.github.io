@@ -28,6 +28,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         this.t_param = 0;
 
         //this.start_pos = this.el.object3D.position;
+        this.start_pos = new THREE.Vector3();
         this.el.object3D.getWorldPosition(this.start_pos);
         console.warn("start position");
         console.warn(this.start_pos);
@@ -46,13 +47,14 @@ AFRAME.registerComponent('move_near_far_to_camera', {
             //el.object3D.scale.copy(data.to);
             fwd = true; //animation forward
             bck = false; //animation backward
-            
+            //el.object3D.getWorldPosition(this.start_pos);
             t_param = 0;
             //TargetPosVec.copy(cam.object3D.position);
             cam.object3D.getWorldPosition(TargetPosVec);
             console.warn("enter");
             console.warn(TargetPosVec);
-            console.warn(cam.object3D.position);
+            //console.warn(cam.object3D.position);
+            //console.warn("start obj pos world: ",this.start_pos);
         
         });
         this.el.addEventListener('mouseleave', function () {
@@ -115,7 +117,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         //directionVec3.copy(targetPosition).sub(currentPosition);
         //var NormalizedDirection = directionVec3.normalize();
         //directionVec3.normalize();
-        console.log(this.fwd,this.bck);
+        //console.log(this.fwd,this.bck);
         if (this.fwd && !this.bck)
         {
             //forward animation
