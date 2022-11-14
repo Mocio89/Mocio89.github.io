@@ -8,6 +8,7 @@ AFRAME.registerComponent('scale-on-mouseenter', {
     //The component’s property type values are available through "this.data" (e.g. this.data.to)
     //The defined properties can be initialized/written in the static HTML in the a-entity tag (e.g. <a-entity scale-on-mouseenter="to: 1.5 2.5 3.0; message: Hello!"></a-entity>)
     schema: {
+        from: {type: 'vec3', default: {x: 0.5, y: 0.5, z: 0.5}},
         to: {type: 'vec3', default: {x: 1.5, y: 1.5, z: 1.5}},
         message: {type: 'string', default: 'ScaleOnMouseEnter'}
     },
@@ -24,6 +25,11 @@ AFRAME.registerComponent('scale-on-mouseenter', {
       var el = this.el;
       this.el.addEventListener('mouseenter', function () {
         el.object3D.scale.copy(data.to);
+        console.warn("enter");
+        console.warn(data.to);
+      });
+      this.el.addEventListener('mouseleave', function () {
+        el.object3D.scale.copy(data.from);
         console.warn("enter");
         console.warn(data.to);
       });
