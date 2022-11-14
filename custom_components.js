@@ -31,24 +31,30 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         this.CurrentPosVec = new THREE.Vector3();
         this.TargetPosVec = new THREE.Vector3();
 
+        var fwd = this.fwd;
+        var bck = this.bck;
+        var t_param = this.t_param;
+        var TargetPosVec = this.TargetPosVec;
+        var CurrentPosVec = this.CurrentPosVec;
         this.el.addEventListener('mouseenter', function () {
             //el.object3D.scale.copy(data.to);
-            this.fwd = true; //animation forward
-            this.bck = false; //animation backward
-            this.t_param = 0;
-            this.TargetPosVec.copy(this.cam.object3D.position);
+            fwd = true; //animation forward
+            bck = false; //animation backward
+            
+            t_param = 0;
+            TargetPosVec.copy(this.cam.object3D.position);
             console.warn("enter");
-            console.warn(this.TargetPosVec);
+            console.warn(TargetPosVec);
         
         });
         this.el.addEventListener('mouseleave', function () {
             //el.object3D.scale.copy(data.from);
-            this.fwd = false; //animation forward
-            this.bck = true; //animation backward
-            this.t_param = 0;
-            this.CurrentPosVec.copy(this.el.object3D.position);
+            fwd = false; //animation forward
+            bck = true; //animation backward
+            t_param = 0;
+            CurrentPosVec.copy(this.el.object3D.position);
             console.warn("leave");
-            console.warn(this.CurrentPosVec);
+            console.warn(CurrentPosVec);
         });
     },
 
