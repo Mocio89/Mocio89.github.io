@@ -36,6 +36,8 @@ AFRAME.registerComponent('move_near_far_to_camera', {
             this.bck = false; //animation backward
             this.t_param = 0;
             this.TargetPosVec.copy(this.cam.object3D.position);
+            console.warn("enter");
+            console.warn(this.TargetPosVec);
         
         });
         this.el.addEventListener('mouseleave', function () {
@@ -44,6 +46,8 @@ AFRAME.registerComponent('move_near_far_to_camera', {
             this.bck = true; //animation backward
             this.t_param = 0;
             this.CurrentPosVec.copy(this.el.object3D.position);
+            console.warn("leave");
+            console.warn(this.CurrentPosVec);
         });
     },
 
@@ -106,6 +110,8 @@ AFRAME.registerComponent('move_near_far_to_camera', {
                 //fine animazione
                 this.fwd = false; //animation forward
                 this.bck = false; //animation backward
+                console.warn("fine anim avanti");
+                console.warn(this.t_param);
                 return;
             }
 
@@ -121,6 +127,8 @@ AFRAME.registerComponent('move_near_far_to_camera', {
                 //fine animazione
                 this.fwd = false; //animation forward
                 this.bck = false; //animation backward
+                console.warn("fine indietro");
+                console.warn(this.t_param);
                 return;
             }
         }
