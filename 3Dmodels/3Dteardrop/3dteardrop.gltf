@@ -6,33 +6,33 @@
     "scene": 0,
     "buffers": [
         {
-            "byteLength": 649492,
+            "byteLength": 58928,
             "uri": "buffer.bin"
         }
     ],
     "bufferViews": [
         {
             "buffer": 0,
-            "byteLength": 52020,
+            "byteLength": 5040,
             "byteOffset": 0,
             "target": 34963
         },
         {
             "buffer": 0,
-            "byteLength": 224052,
-            "byteOffset": 52020,
+            "byteLength": 20208,
+            "byteOffset": 5040,
             "target": 34962
         },
         {
             "buffer": 0,
-            "byteLength": 224052,
-            "byteOffset": 276072,
+            "byteLength": 20208,
+            "byteOffset": 25248,
             "target": 34962
         },
         {
             "buffer": 0,
-            "byteLength": 149368,
-            "byteOffset": 500124,
+            "byteLength": 13472,
+            "byteOffset": 45456,
             "target": 34962
         }
     ],
@@ -48,38 +48,38 @@
         {
             "componentType": 5123,
             "type": "SCALAR",
-            "count": 26010,
+            "count": 2520,
             "bufferView": 0,
             "byteOffset": 0
         },
         {
             "componentType": 5126,
             "type": "VEC3",
-            "count": 18671,
+            "count": 1684,
             "bufferView": 1,
             "byteOffset": 0,
             "min": [
-                -0.00129956647288054,
-                -0.00218594213947654,
-                -0.000366008054697886
+                -0.000726784521248192,
+                -0.00121665117330849,
+                -0.000250000710366294
             ],
             "max": [
-                0.00129536003805697,
-                0.0012697308557108,
-                0.00033399200765416
+                0.000722349854186177,
+                0.000748964841477573,
+                0.000249999982770532
             ]
         },
         {
             "componentType": 5126,
             "type": "VEC3",
-            "count": 18671,
+            "count": 1684,
             "bufferView": 2,
             "byteOffset": 0
         },
         {
             "componentType": 5126,
             "type": "VEC2",
-            "count": 18671,
+            "count": 1684,
             "bufferView": 3,
             "byteOffset": 0
         }
@@ -89,7 +89,7 @@
     ],
     "materials": [
         {
-            "name": "SVGMat.008",
+            "name": "SVGMat.003",
             "alphaMode": "OPAQUE",
             "extras": {
                 "fromFBX": {
@@ -99,9 +99,9 @@
             },
             "pbrMetallicRoughness": {
                 "baseColorFactor": [
-                    0.0636930614709854,
                     0.0,
-                    0.0635942220687866,
+                    0.0,
+                    0.0,
                     1.0
                 ],
                 "metallicFactor": 0.400000005960464,
@@ -111,7 +111,7 @@
     ],
     "meshes": [
         {
-            "name": "3dfill",
+            "name": "path4684",
             "primitives": [
                 {
                     "material": 0,
@@ -150,7 +150,7 @@
             ]
         },
         {
-            "name": "3dfill",
+            "name": "path4684",
             "translation": [
                 0.0,
                 0.0,

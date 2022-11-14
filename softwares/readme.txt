@@ -1,0 +1,1 @@
+.\FBX2glTF-windows-x64.exe -i ..\3Dmodels\3Dteardrop\full3dsymb.fbx -o ..\3Dmodels\3Dteardrop\3dteardrop.gltf
