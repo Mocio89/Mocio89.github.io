@@ -28,7 +28,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         this.t_param = 0;
 
         //this.start_pos = this.el.object3D.position;
-        el.object3D.getWorldPosition(this.start_pos);
+        this.el.object3D.getWorldPosition(this.start_pos);
         this.InterpolatedVec = new THREE.Vector3();
         this.CurrentPosVec = new THREE.Vector3();
         this.TargetPosVec = new THREE.Vector3();
