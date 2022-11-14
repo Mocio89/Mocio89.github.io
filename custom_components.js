@@ -29,6 +29,8 @@ AFRAME.registerComponent('move_near_far_to_camera', {
 
         //this.start_pos = this.el.object3D.position;
         this.el.object3D.getWorldPosition(this.start_pos);
+        console.warn("start position");
+        console.warn(this.start_pos);
         this.InterpolatedVec = new THREE.Vector3();
         this.CurrentPosVec = new THREE.Vector3();
         this.TargetPosVec = new THREE.Vector3();
@@ -113,7 +115,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         //directionVec3.copy(targetPosition).sub(currentPosition);
         //var NormalizedDirection = directionVec3.normalize();
         //directionVec3.normalize();
-
+        console.log(this.fwd,this.bck);
         if (this.fwd && !this.bck)
         {
             //forward animation
