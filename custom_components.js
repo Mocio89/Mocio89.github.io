@@ -66,7 +66,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
             el.object3D.getWorldPosition(CurrentPosVec);
             console.warn("leave");
             console.warn(CurrentPosVec);
-            console.warn(el.object3D.position);
+            //console.warn(el.object3D.position);
         });
     },
 
