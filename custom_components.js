@@ -22,6 +22,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         this.cam = document.querySelector("#main_camera");
         console.warn("camera");
         console.warn(this.cam);
+        console.warn(this.cam.object3D.position);
         this.fwd = false; //animation forward
         this.bck = false; //animation backward
         this.t_param = 0;
@@ -36,15 +37,18 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         var t_param = this.t_param;
         var TargetPosVec = this.TargetPosVec;
         var CurrentPosVec = this.CurrentPosVec;
+        var cam = this.cam;
+        var el = this.el;
         this.el.addEventListener('mouseenter', function () {
             //el.object3D.scale.copy(data.to);
             fwd = true; //animation forward
             bck = false; //animation backward
             
             t_param = 0;
-            TargetPosVec.copy(this.cam.object3D.position);
+            TargetPosVec.copy(cam.object3D.position);
             console.warn("enter");
             console.warn(TargetPosVec);
+            console.warn(cam.object3D.position);
         
         });
         this.el.addEventListener('mouseleave', function () {
@@ -52,9 +56,10 @@ AFRAME.registerComponent('move_near_far_to_camera', {
             fwd = false; //animation forward
             bck = true; //animation backward
             t_param = 0;
-            CurrentPosVec.copy(this.el.object3D.position);
+            CurrentPosVec.copy(el.object3D.position);
             console.warn("leave");
             console.warn(CurrentPosVec);
+            console.warn(el.object3D.position);
         });
     },
 
