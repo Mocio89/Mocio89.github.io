@@ -36,36 +36,37 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         this.CurrentPosVec = new THREE.Vector3();
         this.TargetPosVec = new THREE.Vector3();
 
-        var fwd = this.fwd;
+       /*  var fwd = this.fwd;
         var bck = this.bck;
         var t_param = this.t_param;
         var TargetPosVec = this.TargetPosVec;
         var CurrentPosVec = this.CurrentPosVec;
         var cam = this.cam;
-        var el = this.el;
+        var el = this.el; */
+        var self = this;
         this.el.addEventListener('mouseenter', function () {
             //el.object3D.scale.copy(data.to);
-            fwd = true; //animation forward
-            bck = false; //animation backward
+            self.fwd = true; //animation forward
+            self.bck = false; //animation backward
             //el.object3D.getWorldPosition(this.start_pos);
-            t_param = 0;
+            self.t_param = 0;
             //TargetPosVec.copy(cam.object3D.position);
-            cam.object3D.getWorldPosition(TargetPosVec);
+            self.cam.object3D.getWorldPosition(self.TargetPosVec);
             console.warn("enter");
-            console.warn(TargetPosVec);
+            console.warn(self.TargetPosVec);
             //console.warn(cam.object3D.position);
             //console.warn("start obj pos world: ",this.start_pos);
         
         });
         this.el.addEventListener('mouseleave', function () {
             //el.object3D.scale.copy(data.from);
-            fwd = false; //animation forward
-            bck = true; //animation backward
-            t_param = 0;
+            self.fwd = false; //animation forward
+            self.bck = true; //animation backward
+            self.t_param = 0;
             //CurrentPosVec.copy(el.object3D.position);
-            el.object3D.getWorldPosition(CurrentPosVec);
+            self.el.object3D.getWorldPosition(self.CurrentPosVec);
             console.warn("leave");
-            console.warn(CurrentPosVec);
+            console.warn(self.CurrentPosVec);
             //console.warn(el.object3D.position);
         });
     },
