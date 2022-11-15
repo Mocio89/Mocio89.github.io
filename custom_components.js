@@ -253,9 +253,7 @@ AFRAME.registerComponent('marker-global-pos', {
         //this.cam = document.querySelector("#main_camera");
         this.global_pos = new THREE.Vector3();
         this.elDiv = document.getElementById("marker-global-pos");
-    
-        
-        
+      
     },
     tick: function (t, dt) {
         this.time += dt;
