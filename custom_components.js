@@ -197,7 +197,8 @@ AFRAME.registerComponent('my-animation', {
             self.completed.innerHTML = 'completed : ' + animation.completed;
         }
         });
-        //this.animation.began = true;
+        this.animation.began = false;
+        this.animation.pause();        
         this.el.addEventListener('click', function () {
             console.warn("click play");
             self.animation.play();
