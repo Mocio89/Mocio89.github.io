@@ -198,7 +198,8 @@ AFRAME.registerComponent('my-animation', {
         }
         });
         //this.animation.began = true;
-        this.el.addEventListener('mouseenter', function () {
+        this.el.addEventListener('click', function () {
+            console.warn("click play");
             self.animation.play();
         });
         function logFinished() {
