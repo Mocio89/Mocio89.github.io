@@ -172,7 +172,7 @@ AFRAME.registerComponent('my-animation', {
 
     schema: {
         from: {type: 'vec3', default: {x: 0, y: 0, z: 0}},
-        to: {type: 'vec3', default: {x: 0, y: -5, z: 0}}
+        to: {type: 'vec3', default: {x: 0, y: 5, z: 0}}
     },
 
     init: function () {
