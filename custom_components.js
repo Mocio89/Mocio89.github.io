@@ -123,7 +123,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         {
             //forward animation
             //toward camera
-            this.t_param += timeDelta/1000.0;
+            this.t_param += 0.1*timeDelta/1000.0;
             this.InterpolatedVec.lerpVectors(this.start_pos,this.TargetPosVec,this.t_param)
             if(this.t_param>this.data.t_param_stop)
             {
@@ -140,7 +140,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         {
             //backward animation
             //back to original position
-            this.t_param += timeDelta/1000.0;
+            this.t_param += 0.1*timeDelta/1000.0;
             this.InterpolatedVec.lerpVectors(this.CurrentPosVec,this.start_pos, this.t_param)
             if(this.t_param>this.data.t_param_stop)
             {
@@ -156,12 +156,12 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         {
             return;
         }
-
+        var localInterpolate = this.el.object3Dthis.worldToLocal(this.InterpolatedVec);
         // Translate the entity in the direction towards the target.
         this.el.setAttribute('position', {
-            x: this.InterpolatedVec.x,
-            y: this.InterpolatedVec.y,
-            z: this.InterpolatedVec.z
+            x: localInterpolate.x,
+            y: localInterpolate.y,
+            z: localInterpolate.z
           });
     }
 
