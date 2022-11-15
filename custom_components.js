@@ -185,7 +185,7 @@ AFRAME.registerComponent('my-animation', {
         targets: [{x: self.data.from.x, y: self.data.from.y, z: self.data.from.z}],
         x: self.data.to.x, y: self.data.to.y, z: self.data.to.z,
         autoplay: false,
-        duration: 2000,
+        duration: 5000,
         easing: "linear",
         loop: false,
         round: false,
