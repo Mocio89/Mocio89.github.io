@@ -269,6 +269,7 @@ AFRAME.registerComponent('print-global-pos', {
         this.time += dt;
         if(this.time>100)
         {
+            //every 100ms update the object global position
             this.time=0;
             //print global pos of the marker (camera is always at 0,0,0)
             this.el.object3D.getWorldPosition(this.global_pos);
