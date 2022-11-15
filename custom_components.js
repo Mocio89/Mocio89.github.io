@@ -168,7 +168,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
     });
 
 
-AFRAME.registerComponent('my-animation', { 
+AFRAME.registerComponent('tag-anim-toward_camera', { 
 
     schema: {
         from: {type: 'vec3', default: {x: 0, y: 0, z: 0}},
@@ -199,18 +199,18 @@ AFRAME.registerComponent('my-animation', {
             self.completed.innerHTML = 'completed : ' + animation.completed;
         },
         begin: function(animation) {
-            console.warn("begin play");
+            //console.warn("begin play");
             self.began.innerHTML = 'began : ' + animation.began;
             animation.completed=false;
         },
         complete: function(animation) {
-            console.warn("complete play");
+            //console.warn("complete play");
             self.completed.innerHTML = 'completed : ' + animation.completed;
             animation.began=false;
         }
         });       
         this.el.addEventListener('click', function () {
-            console.warn("click play");
+            //console.warn("click play");
             self.start=!self.start;
             if(self.start)
             {
@@ -231,7 +231,8 @@ AFRAME.registerComponent('my-animation', {
 
         });
         function logFinished() {
-            console.warn("Animation Finished");
+            //console.warn("Animation Finished");
+            self.animation.began=false;
         }
         this.animation.finished.then(logFinished);
         
