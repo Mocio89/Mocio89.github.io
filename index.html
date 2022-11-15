@@ -21,14 +21,15 @@
         </a-entity>
       </a-entity>
       <!-- multiple markers can be programmed. Camera is fixed at 0,0,0 looking at -Z -->
-      <a-marker preset="hiro">
+      <a-marker preset="hiro" size="0.188">
         <a-entity
           position="0 0 0"
           rotation="0 0 0"
           scale="0.5 0.5 0.5"
           gltf-model="/3Dmodels/3Dteardrop/3dteardrop.gltf"
           animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: easeInOutCirc"
-          move_near_far_to_camera="t_param_stop: 0.5"
+          animation__posenter="property: position; to: 0 0 -5; dur: 2000; easing: linear; startEvents: mouseenter"
+          animation__posleave="property: position; to: 0 0 0; dur: 2000; easing: linear; startEvents: mouseleave"
         ></a-entity>
       </a-marker>
 
@@ -44,5 +45,7 @@
 
  <a-animation begin="click" easing="ease-in" attribute="scale" fill="forwards" from="0.2 0.2 0.2" to="1 1 1" dur="150"></a-animation>
  <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
+
+ move_near_far_to_camera="t_param_stop: 0.5"
 
  -->
