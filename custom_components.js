@@ -242,9 +242,10 @@ AFRAME.registerComponent('my-animation', {
     });
 
 
-AFRAME.registerComponent('marker-global-pos', { 
+AFRAME.registerComponent('print-global-pos', { 
 
     schema: {
+        id_el: {type: 'string', default: 'div-marker-global-pos'}
     },
 
     init: function () {
@@ -252,7 +253,7 @@ AFRAME.registerComponent('marker-global-pos', {
         this.time = 0;
         //this.cam = document.querySelector("#main_camera");
         this.global_pos = new THREE.Vector3();
-        this.elDiv = document.getElementById("marker-global-pos");
+        this.elDiv = document.getElementById(id_el);
       
     },
     tick: function (t, dt) {
