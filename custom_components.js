@@ -166,3 +166,49 @@ AFRAME.registerComponent('move_near_far_to_camera', {
     }
 
     });
+
+
+AFRAME.registerComponent('my-animation', { 
+
+    schema: {
+        from: {type: 'vec3', default: {x: 0, y: 0, z: 0}},
+        to: {type: 'vec3', default: {x: 0, y: -5, z: 0}}
+    },
+
+    init: function () {
+        var self = this;
+        this.time = 0;
+        this.progress = document.getElementById("progress");
+        this.began = document.getElementById("began");
+        this.completed = document.getElementById("completed");
+        this.animation = AFRAME.ANIME({
+        targets: [{x: self.data.from.x, y: self.data.from.y, z: self.data.from.z}],
+        x: self.data.to.x, y: self.data.to.y, z: self.data.to.z,
+        autoplay: false,
+        duration: 2000,
+        easing: "linear",
+        loop: false,
+        round: false,
+        update: function (animation) {
+            var value = animation.animatables[0].target;
+            self.el.object3D.position.set(value.x, value.y, value.z);
+            this.progress.innerHTML = 'progress : ' + Math.round(animation.progress) + '%';
+            this.began.innerHTML = 'began : ' + animation.began;
+            this.completed.innerHTML = 'completed : ' + animation.completed;
+        }
+        });
+        //this.animation.began = true;
+        this.el.addEventListener('mouseenter', function () {
+            self.animation.play();
+        });
+        function logFinished() {
+            console.warn("Animation Finished");
+        }
+        this.animation.finished.then(logFinished);
+        
+    },
+    tick: function (t, dt) {
+        this.time += dt;
+        this.animation.tick(this.time);
+    }
+    });
