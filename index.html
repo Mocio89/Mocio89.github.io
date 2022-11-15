@@ -4,6 +4,16 @@
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="custom_components.js"></script>
+
+  <style>
+    #ui {
+        position: fixed;
+        top: 5%;
+        left: 5%;
+        z-index: 2;
+        }
+  </style>
+
   <body style="margin : 0px; overflow: hidden;">
 
     <a-scene embedded arjs>
@@ -40,6 +50,7 @@
           rotation="0 0 0"
           scale="0.5 0.5 0.5"
           gltf-model="/3Dmodels/3Dteardrop/3dteardrop.gltf"
+          animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: easeInOutCirc"
           my-animation
         ></a-entity>
       </a-marker>
@@ -62,6 +73,6 @@
  animation__posenter="property: position; to: 0 -5 0; dur: 2000; easing: linear; startEvents: mouseenter"
  animation__posleave="property: position; to: 0 0 0; dur: 2000; easing: linear; startEvents: mouseleave"
 
- animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: easeInOutCirc"
+
 
  -->

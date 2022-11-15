@@ -178,6 +178,8 @@ AFRAME.registerComponent('my-animation', {
     init: function () {
         var self = this;
         this.time = 0;
+        this.start=false;
+        this.first_scan=true;
         this.progress = document.getElementById("progress");
         this.began = document.getElementById("began");
         this.completed = document.getElementById("completed");
@@ -196,12 +198,27 @@ AFRAME.registerComponent('my-animation', {
             self.began.innerHTML = 'began : ' + animation.began;
             self.completed.innerHTML = 'completed : ' + animation.completed;
         }
-        });
-        this.animation.began = false;
-        this.animation.pause();        
+        });       
         this.el.addEventListener('click', function () {
             console.warn("click play");
-            self.animation.play();
+            self.start=!self.start;
+            if(self.start)
+            {
+                if(!self.first_scan)
+                {
+                    self.animation.reverse();
+                }
+                self.first_scan=false;
+                    
+                self.animation.play();
+            }
+            else
+            {
+                //self.animation.pause();
+                self.animation.reverse();
+                self.animation.play();
+            }
+
         });
         function logFinished() {
             console.warn("Animation Finished");
@@ -210,7 +227,13 @@ AFRAME.registerComponent('my-animation', {
         
     },
     tick: function (t, dt) {
-        this.time += dt;
-        this.animation.tick(this.time);
+        //this.time += dt;
+        //this.animation.tick(this.time);
+        /*
+        if(this.start)
+        {       
+            this.animation.tick(this.time);       
+        }
+        */
     }
     });
