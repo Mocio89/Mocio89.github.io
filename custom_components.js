@@ -172,7 +172,7 @@ AFRAME.registerComponent('my-animation', {
 
     schema: {
         from: {type: 'vec3', default: {x: 0, y: 0, z: 0}},
-        to: {type: 'vec3', default: {x: 0, y: 5, z: 0}}
+        to: {type: 'vec3', default: {x: 0, y: 1, z: 0}}
     },
 
     init: function () {
@@ -197,6 +197,9 @@ AFRAME.registerComponent('my-animation', {
             self.progress.innerHTML = 'progress : ' + Math.round(animation.progress) + '%';
             self.began.innerHTML = 'began : ' + animation.began;
             self.completed.innerHTML = 'completed : ' + animation.completed;
+        },
+        complete: function(anim) {
+            self.completed.innerHTML = 'completed : ' + anim.completed;
         }
         });       
         this.el.addEventListener('click', function () {
