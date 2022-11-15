@@ -30,7 +30,10 @@
         </div>
         <div id="div-marker-global-pos">
           Marker: x: y: z:
-      </div>
+        </div>
+        <div id="div-tag-global-pos">
+          Tag: x: y: z:
+        </div>
       </div>
 
       <a-light type="ambient" intensity="0.7" color="#ffffff"></a-light>
@@ -55,6 +58,7 @@
           gltf-model="/3Dmodels/3Dteardrop/3dteardrop.gltf"
           animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: easeInOutCirc"
           my-animation="from: 0 0 0; to: 0 0.8 0"
+          print-global-pos="id_el: div-tag-global-pos; msg: Tag"
         ></a-entity>
       </a-marker>
 

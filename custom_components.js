@@ -187,7 +187,7 @@ AFRAME.registerComponent('my-animation', {
         targets: [{x: self.data.from.x, y: self.data.from.y, z: self.data.from.z}],
         x: self.data.to.x, y: self.data.to.y, z: self.data.to.z,
         autoplay: false,
-        duration: 5000,
+        duration: 1000,
         easing: "linear",
         loop: false,
         round: false,
@@ -198,8 +198,15 @@ AFRAME.registerComponent('my-animation', {
             self.began.innerHTML = 'began : ' + animation.began;
             self.completed.innerHTML = 'completed : ' + animation.completed;
         },
-        complete: function(anim) {
-            self.completed.innerHTML = 'completed : ' + anim.completed;
+        begin: function(animation) {
+            console.warn("begin play");
+            self.began.innerHTML = 'began : ' + animation.began;
+            animation.completed=false;
+        },
+        complete: function(animation) {
+            console.warn("complete play");
+            self.completed.innerHTML = 'completed : ' + animation.completed;
+            animation.began=false;
         }
         });       
         this.el.addEventListener('click', function () {
@@ -245,7 +252,8 @@ AFRAME.registerComponent('my-animation', {
 AFRAME.registerComponent('print-global-pos', { 
 
     schema: {
-        id_el: {type: 'string', default: 'div-marker-global-pos'}
+        id_el: {type: 'string', default: 'div-marker-global-pos'},
+        msg: {type: 'string', default: 'Marker'}
     },
 
     init: function () {
@@ -263,7 +271,7 @@ AFRAME.registerComponent('print-global-pos', {
             this.time=0;
             //print global pos of the marker (camera is always at 0,0,0)
             this.el.object3D.getWorldPosition(this.global_pos);
-            this.elDiv.innerHTML = "x: " + this.global_pos.x.toFixed(1) + " y: " +  this.global_pos.y.toFixed(1) + " z: " +  this.global_pos.z.toFixed(1);
+            this.elDiv.innerHTML = this.data.msg + " x: " + this.global_pos.x.toFixed(1) + " y: " +  this.global_pos.y.toFixed(1) + " z: " +  this.global_pos.z.toFixed(1);
 
         }
     }
