@@ -156,7 +156,7 @@ AFRAME.registerComponent('move_near_far_to_camera', {
         {
             return;
         }
-        var localInterpolate = this.el.object3Dthis.worldToLocal(this.InterpolatedVec);
+        var localInterpolate = this.el.object3D.worldToLocal(this.InterpolatedVec);
         // Translate the entity in the direction towards the target.
         this.el.setAttribute('position', {
             x: localInterpolate.x,
