@@ -6,20 +6,19 @@
   <script src="custom_components.js"></script>
   <body style="margin : 0px; overflow: hidden;">
 
-    <div id="ui">
-      <div id="progress">
-          Progress: 0%
-      </div>
-      <div id="began">
-          Began: 
-      </div>
-      <div id="completed">
-          Completed: 
-      </div>
-    </div>
-
-
     <a-scene embedded arjs>
+
+      <div id="ui">
+        <div id="progress">
+            Progress: 0%
+        </div>
+        <div id="began">
+            Began: 
+        </div>
+        <div id="completed">
+            Completed: 
+        </div>
+      </div>
 
       <a-light type="ambient" intensity="0.7" color="#ffffff"></a-light>
       <a-light type="point" intensity="10" position="0 0 -2"></a-light>
@@ -42,8 +41,7 @@
           scale="0.5 0.5 0.5"
           gltf-model="/3Dmodels/3Dteardrop/3dteardrop.gltf"
           animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: easeInOutCirc"
-          animation__posenter="property: position; to: 0 -5 0; dur: 2000; easing: linear; startEvents: mouseenter"
-          animation__posleave="property: position; to: 0 0 0; dur: 2000; easing: linear; startEvents: mouseleave"
+          my-animation
         ></a-entity>
       </a-marker>
 
@@ -61,5 +59,8 @@
  <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
 
  move_near_far_to_camera="t_param_stop: 0.5"
+
+ animation__posenter="property: position; to: 0 -5 0; dur: 2000; easing: linear; startEvents: mouseenter"
+ animation__posleave="property: position; to: 0 0 0; dur: 2000; easing: linear; startEvents: mouseleave"
 
  -->
