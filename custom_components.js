@@ -192,9 +192,9 @@ AFRAME.registerComponent('my-animation', {
         update: function (animation) {
             var value = animation.animatables[0].target;
             self.el.object3D.position.set(value.x, value.y, value.z);
-            this.progress.innerHTML = 'progress : ' + Math.round(animation.progress) + '%';
-            this.began.innerHTML = 'began : ' + animation.began;
-            this.completed.innerHTML = 'completed : ' + animation.completed;
+            self.progress.innerHTML = 'progress : ' + Math.round(animation.progress) + '%';
+            self.began.innerHTML = 'began : ' + animation.began;
+            self.completed.innerHTML = 'completed : ' + animation.completed;
         }
         });
         //this.animation.began = true;
