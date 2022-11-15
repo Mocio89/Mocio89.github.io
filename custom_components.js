@@ -253,7 +253,7 @@ AFRAME.registerComponent('print-global-pos', {
         this.time = 0;
         //this.cam = document.querySelector("#main_camera");
         this.global_pos = new THREE.Vector3();
-        this.elDiv = document.getElementById(id_el);
+        this.elDiv = document.getElementById(this.data.id_el);
       
     },
     tick: function (t, dt) {
@@ -263,7 +263,7 @@ AFRAME.registerComponent('print-global-pos', {
             this.time=0;
             //print global pos of the marker (camera is always at 0,0,0)
             this.el.object3D.getWorldPosition(this.global_pos);
-            this.elDiv.innerHTML = "x: " + this.global_pos.position.x.toFixed(1) + " y: " +  this.global_pos.position.y.toFixed(1) + " z: " +  this.global_pos.position.z.toFixed(1);
+            this.elDiv.innerHTML = "x: " + this.global_pos.x.toFixed(1) + " y: " +  this.global_pos.y.toFixed(1) + " z: " +  this.global_pos.z.toFixed(1);
 
         }
     }
