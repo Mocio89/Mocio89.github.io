@@ -184,8 +184,8 @@ AFRAME.registerComponent('tag-anim-toward_camera', {
         this.began = document.getElementById("began");
         this.completed = document.getElementById("completed");
         this.animation = AFRAME.ANIME({
-        targets: [{x: self.data.from.x, y: self.data.from.y, z: self.data.from.z}],
-        x: self.data.to.x, y: self.data.to.y, z: self.data.to.z,
+        targets: [{x: self.data.from.x, y: self.data.from.y, z: self.data.from.z}], //initial values. targets hold modified values during the animation
+        x: self.data.to.x, y: self.data.to.y, z: self.data.to.z, //final values
         autoplay: false,
         duration: 1000,
         easing: "linear",
@@ -232,7 +232,7 @@ AFRAME.registerComponent('tag-anim-toward_camera', {
         });
         function logFinished() {
             //console.warn("Animation Finished");
-            self.animation.began=false;
+            //self.animation.began=false;
         }
         this.animation.finished.then(logFinished);
         
@@ -278,3 +278,93 @@ AFRAME.registerComponent('print-global-pos', {
         }
     }
 });
+
+
+AFRAME.registerComponent('tag-anim-toward_camera2', { 
+
+    schema: {
+        from: {type: 'vec3', default: {x: 0, y: 0, z: 0}},
+        to: {type: 'vec3', default: {x: 0, y: 1, z: 0}}
+    },
+
+    init: function () {
+        var self = this;
+        this.time = 0;
+        this.start=false;
+        this.first_scan=true;
+        this.progress = document.getElementById("progress");
+        this.began = document.getElementById("began");
+        this.completed = document.getElementById("completed");
+
+        //this.global_from = new THREE.Vector3();
+        //this.el.object3D.getWorldPosition(this.global_start);
+        this.global_from = this.el.object3D.localToWorld(this.data.from);
+        this.global_to = this.el.object3D.localToWorld(this.data.to);
+
+        this.animation = AFRAME.ANIME({
+        targets: [{x: self.global_from.x, y: self.global_from.y, z: self.global_from.z}], //initial values. targets hold modified values during the animation
+        x: self.global_to.x, y: self.global_to.y, z: self.global_to.z, //final values
+        autoplay: false,
+        duration: 1000,
+        easing: "linear",
+        loop: false,
+        round: false,
+        update: function (animation) {
+            var value = animation.animatables[0].target;
+            var valueg = new THREE.Vector3(value.x,value.y,value.z);
+            var value_l = self.el.object3D.worldToLocal(valueg);
+            self.el.object3D.position.set(value_l.x, value_l.y, value_l.z);
+            self.progress.innerHTML = 'progress : ' + Math.round(animation.progress) + '%';
+            self.began.innerHTML = 'began : ' + animation.began;
+            self.completed.innerHTML = 'completed : ' + animation.completed;
+        },
+        begin: function(animation) {
+            //console.warn("begin play");
+            self.began.innerHTML = 'began : ' + animation.began;
+            animation.completed=false;
+        },
+        complete: function(animation) {
+            //console.warn("complete play");
+            self.completed.innerHTML = 'completed : ' + animation.completed;
+            animation.began=false;
+        }
+        });       
+        this.el.addEventListener('click', function () {
+            //console.warn("click play");
+            self.start=!self.start;
+            if(self.start)
+            {
+                if(!self.first_scan)
+                {
+                    self.animation.reverse();
+                }
+                self.first_scan=false;
+                    
+                self.animation.play();
+            }
+            else
+            {
+                //self.animation.pause();
+                self.animation.reverse();
+                self.animation.play();
+            }
+
+        });
+        function logFinished() {
+            //console.warn("Animation Finished");
+            //self.animation.began=false;
+        }
+        this.animation.finished.then(logFinished);
+        
+    },
+    tick: function (t, dt) {
+        //this.time += dt;
+        //this.animation.tick(this.time);
+        /*
+        if(this.start)
+        {       
+            this.animation.tick(this.time);       
+        }
+        */
+    }
+    });
