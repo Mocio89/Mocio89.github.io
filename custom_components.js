@@ -296,10 +296,11 @@ AFRAME.registerComponent('tag-anim-toward_camera2', {
         this.began = document.getElementById("began");
         this.completed = document.getElementById("completed");
 
-        //this.global_from = new THREE.Vector3();
+        this.global_from = new THREE.Vector3();
+        this.global_to = new THREE.Vector3();
         //this.el.object3D.getWorldPosition(this.global_start);
-        this.global_from = this.el.object3D.localToWorld(new THREE.Vector3(this.data.from.x,this.data.from.y,this.data.from.z));
-        this.global_to = this.el.object3D.localToWorld(new THREE.Vector3(this.data.to.x,this.data.to.y,this.data.to.z));
+        this.global_from.copy(this.el.object3D.localToWorld(new THREE.Vector3(this.data.from.x,this.data.from.y,this.data.from.z)));
+        this.global_to.copy(this.el.object3D.localToWorld(new THREE.Vector3(this.data.to.x,this.data.to.y,this.data.to.z)));
         console.warn("gfrom: "+this.global_from)
         console.warn("gto: "+this.global_to)
 
