@@ -298,8 +298,8 @@ AFRAME.registerComponent('tag-anim-toward_camera2', {
 
         //this.global_from = new THREE.Vector3();
         //this.el.object3D.getWorldPosition(this.global_start);
-        this.global_from = this.el.object3D.localToWorld(this.data.from);
-        this.global_to = this.el.object3D.localToWorld(this.data.to);
+        this.global_from = this.el.object3D.localToWorld(new THREE.Vector3(this.data.from.x,this.data.from.y,this.data.from.z));
+        this.global_to = this.el.object3D.localToWorld(new THREE.Vector3(this.data.to.x,this.data.to.y,this.data.to.z));
 
         this.animation = AFRAME.ANIME({
         targets: [{x: self.global_from.x, y: self.global_from.y, z: self.global_from.z}], //initial values. targets hold modified values during the animation
