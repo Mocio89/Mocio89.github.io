@@ -1,0 +1,11 @@
+Model Information:
+* title:	Robotic Arm KUKA
+* source:	https://sketchfab.com/3d-models/robotic-arm-kuka-0211a7f80bdc48f784af6796913af96b
+* author:	Vladislav Krutenyuk (https://sketchfab.com/vladkrutenyuk)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Robotic Arm KUKA" (https://sketchfab.com/3d-models/robotic-arm-kuka-0211a7f80bdc48f784af6796913af96b) by Vladislav Krutenyuk (https://sketchfab.com/vladkrutenyuk) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
