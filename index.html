@@ -7,14 +7,15 @@
     <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
     <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
   </a-assets>
-  
-  <a-box position="0 2 -5" rotation="0 45 45" scale="2 2 2" src="#boxTexture">
-    <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite"
-      to="0 2.2 -5"></a-animation>
-    <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
-    <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
-    <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
-  </a-box>
+
+
+    <!--robot-->
+    <a-entity
+      position="0 2 -5"
+      rotation="0 0 0"
+      scale="0.5 0.5 0.5"
+      gltf-model="/3Dmodels\kuma_heavy_robot\scene.gltf"
+    ></a-entity>
   
   <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"></a-sky>
   
@@ -35,7 +36,14 @@
 <a-text value="Hello, A-Frame!" color="#BBB"
           position="-0.9 0.2 -3" scale="1.5 1.5 1.5"></a-text>
 
-
+  
+  <a-box position="0 2 -5" rotation="0 45 45" scale="2 2 2" src="#boxTexture">
+    <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite"
+      to="0 2.2 -5"></a-animation>
+    <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+    <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
+    <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+  </a-box>
 
 
 -->
