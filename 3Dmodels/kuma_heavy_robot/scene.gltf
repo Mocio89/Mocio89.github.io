@@ -919,16 +919,16 @@
   ],
   "images": [
     {
-      "uri": "textures/Material.002_baseColor.jpeg"
+      "uri": "/3Dmodels/kuma_heavy_robot/textures/Material.002_baseColor.jpeg"
     },
     {
-      "uri": "textures/Material.002_metallicRoughness.png"
+      "uri": "/3Dmodels/kuma_heavy_robot/textures/Material.002_metallicRoughness.png"
     },
     {
-      "uri": "textures/Material.002_emissive.jpeg"
+      "uri": "/3Dmodels/kuma_heavy_robot/textures/Material.002_emissive.jpeg"
     },
     {
-      "uri": "textures/Material.002_normal.png"
+      "uri": "/3Dmodels/kuma_heavy_robot/textures/Material.002_normal.png"
     }
   ],
   "materials": [
