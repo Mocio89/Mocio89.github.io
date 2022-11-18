@@ -1,95 +1,41 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="custom_components.js?v=9"></script>
+<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script> 
 
-  <body style="margin : 0px; overflow: hidden;">
+<a-scene>
+  
+    <a-assets>
+    <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
+    <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+    <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+  </a-assets>
+  
+  <a-box position="0 2 -5" rotation="0 45 45" scale="2 2 2" src="#boxTexture">
+    <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite"
+      to="0 2.2 -5"></a-animation>
+    <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+    <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
+    <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+  </a-box>
+  
+  <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"></a-sky>
+  
+  <a-light type="ambient" color="#445451"></a-light>
+  <a-light type="point" intensity="2" position="2 4 4"></a-light>
 
-    <a-scene embedded arjs>
+  <a-plane src="#groundTexture" rotation="-90 0 0" height="100" width="100"></a-plane>
+  
+  <a-camera>
+    <a-cursor color="#FAFAFA">
+  </a-camera>
 
-      <div id="ui">
-        <div id="progress">
-            Progress: 0%
-        </div>
-        <div id="began">
-            Began: 
-        </div>
-        <div id="completed">
-            Completed: 
-        </div>
-        <div id="div-marker-global-pos">
-          Marker: x: y: z:
-        </div>
-        <div id="div-tag-global-pos">
-          Tag: x: y: z:
-        </div>
-      </div>
+</a-scene>
 
-      <!-- Camera is fixed at 0,0,0 looking at -Z -->
-      <a-entity camera id="main_camera">
-        <!-- IMPORTANT: raycast dei soli oggetti con classe clickable -->
-        <a-entity cursor="fuse: true; fuseTimeout: 800"
-                  raycaster="objects: .clickable"
-                  position="0 0 -2"
-                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
-                  material="color: black; shader: flat">
-        </a-entity>
-      </a-entity>
 
-      <!-- multiple markers can be programmed. Camera is fixed at 0,0,0 looking at -Z -->
-      <a-marker preset="hiro" size="0.188" print-global-pos="id_el: div-marker-global-pos">
-        <a-entity geometry="primitive: box" position="0 0.5 0" scale="0.1 0.1 0.1"></a-entity>
-        <a-entity id="id-tags-container">
-          <!--TAG 1-->
-          <a-entity
-            class="clickable"
-            position="0 0 0"
-            rotation="0 0 0"
-            scale="0.5 0.5 0.5"
-            gltf-model="/3Dmodels/3Dteardrop/3dteardrop.gltf"
-            animation="property: rotation; to: 0 0 360; loop: true; dur: 1500; easing: easeInOutCirc"
-            tag-anim-toward_camera="from: 0 0 0; to: 0 0.8 0"
-            print-global-pos="id_el: div-tag-global-pos; msg: Tag"
-          ></a-entity>
-          <!--TAG 2-->
-          <a-entity
-            class="clickable"
-            position="0.5 0 0"
-            rotation="0 0 0"
-            scale="0.5 0.5 0.5"
-            gltf-model="/3Dmodels/3Dteardrop/3dteardrop.gltf"
-            animation="property: rotation; to: 0 0 360; loop: true; dur: 1500; easing: easeInOutCirc"
-            tag-anim-toward_camera="from: 0.5 0 0; to: 0.5 0.8 0"
-          ></a-entity>
-        </a-entity>
+<!-- zona commenti
 
-      </a-marker>
-      
-    </a-scene>
-
-  </body>
-</html>
-
-<!--  SPAZIO PER I COMMENTI
-
- scale-on-mouseenter="from: 0.5 0.5 0.5; to: 1.5 1.5 1.5;"
-
- <a-animation begin="click" easing="ease-in" attribute="scale" fill="forwards" from="0.2 0.2 0.2" to="1 1 1" dur="150"></a-animation>
- <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
-
- move_near_far_to_camera="t_param_stop: 0.5"
-
- animation__posenter="property: position; to: 0 -5 0; dur: 2000; easing: linear; startEvents: mouseenter"
- animation__posleave="property: position; to: 0 0 0; dur: 2000; easing: linear; startEvents: mouseleave"
-
-<a-light type="point" intensity="1" position="0 0.1 0"></a-light>
- <a-light type="ambient" intensity="1" color="#ffffff"></a-light>
+<a-text value="Hello, A-Frame!" color="#BBB"
+          position="-0.9 0.2 -3" scale="1.5 1.5 1.5"></a-text>
 
 
 
- -->
+
+-->

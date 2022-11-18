@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <!-- we import arjs version without NFT but with marker + location based support -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="custom_components.js?v=9"></script>
+
+  <body style="margin : 0px; overflow: hidden;">
+
+    <a-scene embedded arjs>
+
+      <div id="ui">
+        <div id="progress">
+            Progress: 0%
+        </div>
+        <div id="began">
+            Began: 
+        </div>
+        <div id="completed">
+            Completed: 
+        </div>
+        <div id="div-marker-global-pos">
+          Marker: x: y: z:
+        </div>
+        <div id="div-tag-global-pos">
+          Tag: x: y: z:
+        </div>
+      </div>
+
+      <!-- Camera is fixed at 0,0,0 looking at -Z -->
+      <a-entity camera id="main_camera">
+        <!-- IMPORTANT: raycast dei soli oggetti con classe clickable -->
+        <a-entity cursor="fuse: true; fuseTimeout: 800"
+                  raycaster="objects: .clickable"
+                  position="0 0 -2"
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                  material="color: black; shader: flat">
+        </a-entity>
+      </a-entity>
+
+      <!-- multiple markers can be programmed. Camera is fixed at 0,0,0 looking at -Z -->
+      <a-marker preset="hiro" size="0.188" print-global-pos="id_el: div-marker-global-pos">
+        <a-entity geometry="primitive: box" position="0 0.5 0" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity id="id-tags-container">
+          <!--TAG 1-->
+          <a-entity
+            class="clickable"
+            position="0 0 0"
+            rotation="0 0 0"
+            scale="0.5 0.5 0.5"
+            gltf-model="/3Dmodels/3Dteardrop/3dteardrop.gltf"
+            animation="property: rotation; to: 0 0 360; loop: true; dur: 1500; easing: easeInOutCirc"
+            tag-anim-toward_camera="from: 0 0 0; to: 0 0.8 0"
+            print-global-pos="id_el: div-tag-global-pos; msg: Tag"
+          ></a-entity>
+          <!--TAG 2-->
+          <a-entity
+            class="clickable"
+            position="0.5 0 0"
+            rotation="0 0 0"
+            scale="0.5 0.5 0.5"
+            gltf-model="/3Dmodels/3Dteardrop/3dteardrop.gltf"
+            animation="property: rotation; to: 0 0 360; loop: true; dur: 1500; easing: easeInOutCirc"
+            tag-anim-toward_camera="from: 0.5 0 0; to: 0.5 0.8 0"
+          ></a-entity>
+        </a-entity>
+
+      </a-marker>
+      
+    </a-scene>
+
+  </body>
+</html>
+
+<!--  SPAZIO PER I COMMENTI
+
+ scale-on-mouseenter="from: 0.5 0.5 0.5; to: 1.5 1.5 1.5;"
+
+ <a-animation begin="click" easing="ease-in" attribute="scale" fill="forwards" from="0.2 0.2 0.2" to="1 1 1" dur="150"></a-animation>
+ <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
+
+ move_near_far_to_camera="t_param_stop: 0.5"
+
+ animation__posenter="property: position; to: 0 -5 0; dur: 2000; easing: linear; startEvents: mouseenter"
+ animation__posleave="property: position; to: 0 0 0; dur: 2000; easing: linear; startEvents: mouseleave"
+
+<a-light type="point" intensity="1" position="0 0.1 0"></a-light>
+ <a-light type="ambient" intensity="1" color="#ffffff"></a-light>
+
+
+
+ -->
