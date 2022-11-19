@@ -112,3 +112,33 @@ AFRAME.registerComponent('print-global-pos', {
         }
     }
 });
+
+
+
+AFRAME.registerComponent('get-skeleton', { 
+
+    schema: {},
+
+    init: function () {
+        var self = this;
+        this.model = null;
+
+        var model = this.el.getObject3D('mesh');
+        if (model) 
+        {
+            this.load(model);
+        } else 
+        {
+            this.el.addEventListener('model-loaded', function (e) {
+                this.load(e.detail.model);
+            }.bind(this));
+        }
+      
+    },
+    load: function (model) {
+        this.model = model;
+    },
+    tick: function (t, dt) {
+
+    }
+});
