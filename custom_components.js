@@ -151,14 +151,14 @@ AFRAME.registerComponent('get-skeleton', {
         console.log(this.firsthand);
 
         this.zero_base = this.base.rotation.y;
-        this.zero_firsthand = this.base.firsthand.x;
+        this.zero_firsthand = this.firsthand.rotation.x;
     },
     tick: function (t, dt) {
         if(this.base && this.firsthand)
         {
             let fi = 0.001*t;
             this.base.rotation.y = this.zero_base + (Math.PI/4.0)*Math.sin(fi/2.0);
-            this.base.firsthand.x = this.zero_firsthand + (Math.PI/6.0)*Math.sin(fi);
+            this.firsthand.rotation.x = this.zero_firsthand + (Math.PI/6.0)*Math.sin(fi);
         }
     }
 });
