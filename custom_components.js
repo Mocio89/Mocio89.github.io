@@ -126,9 +126,12 @@ AFRAME.registerComponent('get-skeleton', {
         this.base = null;
         this.firsthand = null;
         this.holderrotator = null;
+        this.secondhand = null;
+        //home positions
         this.zero_base = 0;
         this.zero_firsthand = 0;
         this.zero_holderrotator = 0;
+        this.zero_secondhand = 0;
 
         var model = this.el.getObject3D('mesh');
         if (model) 
@@ -148,6 +151,7 @@ AFRAME.registerComponent('get-skeleton', {
         this.base = this.model.getObjectByName("Base_02"); //bone
         this.firsthand = this.model.getObjectByName("FirstHand_03"); // bone
         this.holderrotator = this.model.getObjectByName("Holder-Rotator_05"); // bone
+        this.secondhand = this.model.getObjectByName("SecondHamd_04"); // bone
         console.log("Base_02");
         console.log(this.base);
         console.log("FirstHand_03");
@@ -156,14 +160,16 @@ AFRAME.registerComponent('get-skeleton', {
         this.zero_base = this.base.rotation.y;
         this.zero_firsthand = this.firsthand.rotation.y;
         this.zero_holderrotator = this.holderrotator.rotation.y;
+        this.zero_secondhand = this.secondhand.rotation.y;
     },
     tick: function (t, dt) {
-        if(this.base && this.firsthand && this.holderrotator)
+        if(this.base && this.firsthand && this.holderrotator && this.secondhand)
         {
             let fi = 0.001*t;
             this.base.rotation.y = this.zero_base + (Math.PI/4.0)*Math.sin(fi/2.0);
-            this.firsthand.rotation.y = this.zero_firsthand + (Math.PI/8.0)*Math.sin(fi/2);
-            this.holderrotator.rotation.y = this.zero_holderrotator + (Math.PI/6.0)*Math.sin(fi/2);
+            this.firsthand.rotation.y = this.zero_firsthand + (Math.PI/8.0)*Math.sin(fi/3.0);
+            this.holderrotator.rotation.y = this.zero_holderrotator + (Math.PI/3.0)*Math.sin(fi);
+            this.secondhand.rotation.y = this.zero_secondhand + (Math.PI/6.0)*( Math.sin(fi/3) -1);
         }
     }
 });
