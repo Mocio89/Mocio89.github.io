@@ -137,6 +137,7 @@ AFRAME.registerComponent('get-skeleton', {
     },
     load: function (model) {
         this.model = model;
+        console.log(this.model);
     },
     tick: function (t, dt) {
 
