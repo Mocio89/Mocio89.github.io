@@ -125,6 +125,8 @@ AFRAME.registerComponent('get-skeleton', {
         //joints bone
         this.base = null;
         this.firsthand = null;
+        this.zero_base = 0;
+        this.zero_firsthand = 0;
 
         var model = this.el.getObject3D('mesh');
         if (model) 
@@ -147,8 +149,16 @@ AFRAME.registerComponent('get-skeleton', {
         console.log(this.base);
         console.log("FirstHand_03");
         console.log(this.firsthand);
+
+        this.zero_base = this.base.rotation.y;
+        this.zero_firsthand = this.base.firsthand.x;
     },
     tick: function (t, dt) {
-
+        if(this.base && this.firsthand)
+        {
+            let fi = 0.001*t;
+            this.base.rotation.y = this.zero_base + (Math.PI/4.0)*Math.sin(fi/2.0);
+            this.base.firsthand.x = this.zero_firsthand + (Math.PI/6.0)*Math.sin(fi);
+        }
     }
 });
