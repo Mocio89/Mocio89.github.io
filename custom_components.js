@@ -122,6 +122,9 @@ AFRAME.registerComponent('get-skeleton', {
     init: function () {
         var self = this;
         this.model = null;
+        //joints bone
+        this.base = null;
+        this.firsthand = null;
 
         var model = this.el.getObject3D('mesh');
         if (model) 
@@ -138,6 +141,12 @@ AFRAME.registerComponent('get-skeleton', {
     load: function (model) {
         this.model = model;
         console.log(this.model);
+        this.base = this.model.getObjectByName("Base_02"); //bone
+        this.firsthand = this.model.getObjectByName("FirstHand_03"); // bone
+        console.log("Base_02");
+        console.log(this.base);
+        console.log("FirstHand_03");
+        console.log(this.firsthand);
     },
     tick: function (t, dt) {
 
