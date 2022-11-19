@@ -151,7 +151,7 @@ AFRAME.registerComponent('get-skeleton', {
         this.base = this.model.getObjectByName("Base_02"); //bone
         this.firsthand = this.model.getObjectByName("FirstHand_03"); // bone
         this.holderrotator = this.model.getObjectByName("Holder-Rotator_05"); // bone
-        this.secondhand = this.model.getObjectByName("SecondHamd_04"); // bone
+        this.secondhand = this.model.getObjectByName("SecondHand_04"); // bone
         console.log("Base_02");
         console.log(this.base);
         console.log("FirstHand_03");
