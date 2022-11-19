@@ -169,7 +169,7 @@ AFRAME.registerComponent('get-skeleton', {
             this.base.rotation.y = this.zero_base + (Math.PI/4.0)*Math.sin(fi/2.0);
             this.firsthand.rotation.y = this.zero_firsthand + (Math.PI/8.0)*Math.sin(fi/3.0);
             this.holderrotator.rotation.y = this.zero_holderrotator + (Math.PI/3.0)*Math.sin(fi);
-            this.secondhand.rotation.x = this.zero_secondhand + (Math.PI/6.0)*( Math.sin(fi/3) -1);
+            this.secondhand.rotation.x = this.zero_secondhand + (Math.PI/7.0)*( Math.sin(fi/3) +1);
         }
     }
 });
