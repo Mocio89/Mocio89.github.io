@@ -173,3 +173,65 @@ AFRAME.registerComponent('get-skeleton', {
         }
     }
 });
+
+
+
+
+AFRAME.registerComponent('animazione_pedana_da_ws', { 
+
+    schema: {},
+
+    init: function () {
+        var self = this;
+        this.model = null;
+        //joints bone
+        this.bracci = null;
+        this.piattaforma = null;
+        //home positions
+        this.zero_bracci = 0;
+        this.zero_piattaforma = 0;
+
+        var model = this.el.getObject3D('mesh');
+        if (model) 
+        {
+            this.load(model);
+        } else 
+        {
+            this.el.addEventListener('model-loaded', function (e) {
+                this.load(e.detail.model);
+            }.bind(this));
+        }
+      
+    },
+    load: function (model) {
+        this.model = model;
+        console.log(this.model);
+      
+        this.bracci = this.model.getObjectByName("Bracci_Bone"); // bone
+
+        this.piattaforma = this.model.getObjectByName("Piattaforma_Bone"); // bone
+        //console.log("Base_02");
+        //console.log(this.base);
+        //console.log("FirstHand_03");
+        //console.log(this.firsthand);
+       
+        this.zero_bracci = this.bracci.rotation.x;
+        this.zero_piattaforma = this.piattaforma.rotation.x;
+		console.log(this.zero_bracci);
+		console.log(this.zero_piattaforma);
+    },
+    tick: function (t, dt) {
+        if(this.bracci && this.piattaforma)
+        {
+            /*
+            let fi = 0.001*t;           
+            this.bracci.rotation.x = this.zero_bracci + (Math.PI/6.0)*Math.sin(fi/2.0)+1;           
+            this.piattaforma.rotation.x = this.zero_piattaforma + (Math.PI/4.0)*( Math.sin(fi));
+            */
+            this.bracci.rotation.x = this.zero_bracci + globalObject.giunto_bracci;           
+            this.piattaforma.rotation.x = this.zero_piattaforma + globalObject.giunto_piattaforma;
+
+        }
+    }
+});
+
